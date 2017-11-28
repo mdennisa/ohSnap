@@ -16,6 +16,7 @@
  *    icon: class of the icon to show before the alert. Default null
  *    duration: duration of the notification in ms. Default 5000ms
  *    container-id: id of the alert container. Default 'ohsnap'
+ *    alert-class: the classname of alert element to avoid conflict with twitter bootstrap. Default 'alert'
  *    fade-duration: duration of the fade in/out of the alerts. Default 'fast'
 */
 function ohSnap(text, options) {
@@ -24,8 +25,9 @@ function ohSnap(text, options) {
     'icon'        : null,     // class of the icon to show before the alert text
     'duration'    : '5000',   // duration of the notification in ms
     'container-id': 'ohsnap', // id of the alert container
+    'alert-class' : 'alert',  // classname of the alert element
     'fade-duration': 'fast',  // duration of the fade in/out of the alerts. fast, slow or integer in ms
-  }
+  };
 
   options = (typeof options == 'object') ? $.extend(defaultOptions, options) : defaultOptions;
 
@@ -38,11 +40,11 @@ function ohSnap(text, options) {
     }
 
     if (options.color) {
-      color_markup = 'alert-' + options.color;
+        color_markup = options['alert-class'] + '-' + options.color;
     }
 
     // Generate the HTML
-    var html = $('<div class="alert ' + color_markup + '">' + icon_markup + text + '</div>').fadeIn(options['fade-duration']);
+    var html = $('<div class="' + options['alert-class'] + ' ' + color_markup + '">' + icon_markup + text + '</div>').fadeIn(options['fade-duration']);
 
     // Append the label to the container
     $container.append(html);
@@ -67,8 +69,9 @@ function ohSnap(text, options) {
  */
 function ohSnapX(element, options) {
     defaultOptions = {
-      'duration': 'fast'
-    }
+      'duration': 'fast',
+      'alert-class': 'alert'
+    };
 
     options = (typeof options == 'object') ? $.extend(defaultOptions, options) : defaultOptions;
 
@@ -77,7 +80,7 @@ function ohSnapX(element, options) {
             $(this).remove();
         });
     } else {
-        $('.alert').fadeOut(options.duration, function() {
+        $(options['alert-class']).fadeOut(options.duration, function() {
             $(this).remove();
         });
     }
