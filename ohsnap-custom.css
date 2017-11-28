@@ -1,0 +1,34 @@
+/* ohsnap base */
+.ohsnap-alert {
+    padding: 10px;
+    margin: 0 10px 10px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    /* Each alert has its own width */
+    float: right;
+    clear: right;
+    background-color: white;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0, 0.3);
+}
+
+/* ohsnap colors */
+.ohsnap-alert-red {
+    color: white;
+    background-color: #DA4453;
+}
+.ohsnap-alert-green {
+    color: white;
+    background-color: #37BC9B;
+}
+.ohsnap-alert-blue {
+    color: white;
+    background-color: #4A89DC;
+}
+.ohsnap-alert-yellow {
+    color: white;
+    background-color: #F6BB42;
+}
+.ohsnap-alert-orange {
+    color:white;
+    background-color: #E9573F;
+}
